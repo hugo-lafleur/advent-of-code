@@ -1,0 +1,4 @@
+*.data
+*.txt
+template.go
+*/*/*/target/
