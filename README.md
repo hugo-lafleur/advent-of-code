@@ -35,6 +35,12 @@ For now, all of it is written in Go. Hopefully in the future, I would like to us
 |[day 15](./go/2022/day15/)|&check;|&cross;|
 |[day 16](./go/2022/day16/)|&cross;|&cross;|
 
+# Year 2016
+
+| Go                       | Part 1|Part 2 |
+|:------------------------:|:-----:|:-----:|
+|[day 01](./go/2016/day01/)|&check;|&check;|
+
 # Year 2015
 
 <img src="assets/aoc-2015.png">
