@@ -127,29 +127,16 @@ func part2(s string) int {
 }
 
 func main() {
-	content, err := os.ReadFile("test.data")
+	content, err := os.ReadFile("input.data")
 
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("Test :\n")
+	fmt.Printf("\nInput :\n")
 	start := time.Now()
-	fmt.Printf("Part 1 : %d\n", part1(string(content)))
+	fmt.Printf("\nPart 1 : %v\n", part1(string(content)))
 	fmt.Println(time.Since(start))
 	start = time.Now()
-	fmt.Printf("Part 2 : %d\n", part2(string(content)))
-	fmt.Println(time.Since(start))
-
-	content, err = os.ReadFile("input.data")
-
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("Input :\n")
-	start = time.Now()
-	fmt.Printf("Part 1 : %d\n", part1(string(content)))
-	fmt.Println(time.Since(start))
-	start = time.Now()
-	fmt.Printf("Part 2 : %d\n", part2(string(content)))
+	fmt.Printf("\nPart 2 : %v\n", part2(string(content)))
 	fmt.Println(time.Since(start))
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"time"
 )
 
 func min(tab []int) int {
@@ -198,7 +199,11 @@ func part2() int {
 }
 
 func main() {
-	fmt.Printf("Input :\n")
-	fmt.Printf("Part 1 : %d\n", part1())
-	fmt.Printf("Part 2 : %d\n", part2())
+	fmt.Printf("\nInput :\n")
+	start := time.Now()
+	fmt.Printf("\nPart 1 : %v\n", part1())
+	fmt.Println(time.Since(start))
+	start = time.Now()
+	fmt.Printf("\nPart 2 : %v\n", part2())
+	fmt.Println(time.Since(start))
 }

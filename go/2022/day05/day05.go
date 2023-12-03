@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
+	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type Stack []string
@@ -200,21 +201,29 @@ func part2(s string) []string {
 }
 
 func main() {
-	content, err := ioutil.ReadFile("test.data")
+	content, err := os.ReadFile("test.data")
 
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("Test :\n")
-	fmt.Printf("Part 1 : %s\n", part1(string(content)))
-	fmt.Printf("Part 2 : %s\n", part2(string(content)))
+	start := time.Now()
+	fmt.Printf("\nPart 1 : %v\n", part1(string(content)))
+	fmt.Println(time.Since(start))
+	start = time.Now()
+	fmt.Printf("\nPart 2 : %v\n", part2(string(content)))
+	fmt.Println(time.Since(start))
 
-	content, err = ioutil.ReadFile("input.data")
+	content, err = os.ReadFile("input.data")
 
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("Input :\n")
-	fmt.Printf("Part 1 : %s\n", part1(string(content)))
-	fmt.Printf("Part 2 : %s\n", part2(string(content)))
+	fmt.Printf("\nInput :\n")
+	start = time.Now()
+	fmt.Printf("\nPart 1 : %v\n", part1(string(content)))
+	fmt.Println(time.Since(start))
+	start = time.Now()
+	fmt.Printf("\nPart 2 : %v\n", part2(string(content)))
+	fmt.Println(time.Since(start))
 }
