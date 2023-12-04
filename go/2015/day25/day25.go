@@ -2,12 +2,30 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"os"
+	"strconv"
+	"strings"
 	"time"
 )
 
-func part1() int {
+func part1(s string) int {
+	line := strings.Split(s, " ")
+	row := 0
+	column := 0
+	for i, w := range line {
+		if w == "row" {
+			n, _ := strconv.Atoi(line[i+1][:len(line[i+1])-1])
+			row = n
+		}
+		if w == "column" {
+			n, _ := strconv.Atoi(line[i+1][:len(line[i+1])-1])
+			column = n
+		}
+
+	}
 	tab := [7000][7000]int{}
-	n := 2980 + 3074 + 1
+	n := row + column - 1
 	i := 1
 	tab[0][0] = 20151125
 	for i < n {
@@ -22,20 +40,24 @@ func part1() int {
 		}
 		i++
 	}
-	//fmt.Println(tab)
 	return tab[2980][3074]
 }
 
-func part2() int {
+func part2(s string) int {
 	return 0
 }
 
 func main() {
+	content, err := os.ReadFile("input.data")
+
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Printf("\nInput :\n")
 	start := time.Now()
-	fmt.Printf("\nPart 1 : %v\n", part1())
+	fmt.Printf("\nPart 1 : %v\n", part1(string(content)))
 	fmt.Println(time.Since(start))
 	start = time.Now()
-	fmt.Printf("\nPart 2 : %v\n", part2())
+	fmt.Printf("\nPart 2 : %v\n", part2(string(content)))
 	fmt.Println(time.Since(start))
 }
