@@ -2,9 +2,16 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"math/rand"
+	"os"
+	"strconv"
+	"strings"
 	"time"
 )
+
+var hitPoints int
+var baseDamage int
 
 func min(tab []int) int {
 	m := tab[0]
@@ -16,7 +23,21 @@ func min(tab []int) int {
 	return m
 }
 
-func part1() int {
+func part1(s string) int {
+	stats := strings.Split(s, "\n")
+	for i, line := range stats {
+		tab := strings.Split(line, " ")
+		l := len(tab)
+		switch i {
+		case 0:
+			n, _ := strconv.Atoi(tab[l-1])
+			hitPoints = n
+		case 1:
+			n, _ := strconv.Atoi(tab[l-1])
+			baseDamage = n
+		}
+
+	}
 	res := []int{}
 	cost := make(map[int]int)
 	cost[0] = 53
@@ -28,7 +49,7 @@ func part1() int {
 	for i < 5000000 {
 		poison := 0
 		shield := 0
-		boss := 71
+		boss := hitPoints
 		player := 50
 		mana := 500
 		recharge := 0
@@ -97,7 +118,7 @@ func part1() int {
 			if shield > 0 {
 				player -= 3
 			} else {
-				player -= 10
+				player -= baseDamage
 			}
 		}
 		i++
@@ -105,7 +126,21 @@ func part1() int {
 	return min(res)
 }
 
-func part2() int {
+func part2(s string) int {
+	stats := strings.Split(s, "\n")
+	for i, line := range stats {
+		tab := strings.Split(line, " ")
+		l := len(tab)
+		switch i {
+		case 0:
+			n, _ := strconv.Atoi(tab[l-1])
+			hitPoints = n
+		case 1:
+			n, _ := strconv.Atoi(tab[l-1])
+			baseDamage = n
+		}
+
+	}
 	res := []int{}
 	cost := make(map[int]int)
 	cost[0] = 53
@@ -117,7 +152,7 @@ func part2() int {
 	for i < 5000000 {
 		poison := 0
 		shield := 0
-		boss := 71
+		boss := hitPoints
 		player := 50
 		mana := 500
 		recharge := 0
@@ -190,7 +225,7 @@ func part2() int {
 			if shield > 0 {
 				player -= 3
 			} else {
-				player -= 10
+				player -= baseDamage
 			}
 		}
 		i++
@@ -199,11 +234,16 @@ func part2() int {
 }
 
 func main() {
+	content, err := os.ReadFile("input.data")
+
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Printf("\nInput :\n")
 	start := time.Now()
-	fmt.Printf("\nPart 1 : %v\n", part1())
+	fmt.Printf("\nPart 1 : %v\n", part1(string(content)))
 	fmt.Println(time.Since(start))
 	start = time.Now()
-	fmt.Printf("\nPart 2 : %v\n", part2())
+	fmt.Printf("\nPart 2 : %v\n", part2(string(content)))
 	fmt.Println(time.Since(start))
 }
