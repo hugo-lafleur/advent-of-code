@@ -2,19 +2,27 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"os"
+	"strconv"
+	"strings"
 	"time"
 )
 
+var hitPoints int
+var baseDamage int
+var baseArmor int
+
 func win(damage int, armor int) bool {
-	boss := 103
+	boss := hitPoints
 	player := 100
 	for {
-		boss = boss - damage + 2
+		boss = boss - damage + baseArmor
 		//fmt.Println(boss)
 		if boss < 1 {
 			return true
 		}
-		player = player - 9 + armor
+		player = player - baseDamage + armor
 		if player < 1 {
 			return false
 		}
@@ -41,7 +49,24 @@ func max(tab []int) int {
 	return m
 }
 
-func part1() int {
+func part1(s string) int {
+	stats := strings.Split(s, "\n")
+	for i, line := range stats {
+		tab := strings.Split(line, " ")
+		l := len(tab)
+		switch i {
+		case 0:
+			n, _ := strconv.Atoi(tab[l-1])
+			hitPoints = n
+		case 1:
+			n, _ := strconv.Atoi(tab[l-1])
+			baseDamage = n
+		case 2:
+			n, _ := strconv.Atoi(tab[l-1])
+			baseArmor = n
+		}
+
+	}
 	var damage_weapon = make(map[int]int)
 	damage_weapon[0] = 4
 	damage_weapon[1] = 5
@@ -120,7 +145,24 @@ func part1() int {
 	return min(res)
 }
 
-func part2() int {
+func part2(s string) int {
+	stats := strings.Split(s, "\n")
+	for i, line := range stats {
+		tab := strings.Split(line, " ")
+		l := len(tab)
+		switch i {
+		case 0:
+			n, _ := strconv.Atoi(tab[l-1])
+			hitPoints = n
+		case 1:
+			n, _ := strconv.Atoi(tab[l-1])
+			baseDamage = n
+		case 2:
+			n, _ := strconv.Atoi(tab[l-1])
+			baseArmor = n
+		}
+
+	}
 	var damage_weapon = make(map[int]int)
 	damage_weapon[0] = 4
 	damage_weapon[1] = 5
@@ -200,11 +242,16 @@ func part2() int {
 }
 
 func main() {
+	content, err := os.ReadFile("input.data")
+
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Printf("\nInput :\n")
 	start := time.Now()
-	fmt.Printf("\nPart 1 : %v\n", part1())
+	fmt.Printf("\nPart 1 : %v\n", part1(string(content)))
 	fmt.Println(time.Since(start))
 	start = time.Now()
-	fmt.Printf("\nPart 2 : %v\n", part2())
+	fmt.Printf("\nPart 2 : %v\n", part2(string(content)))
 	fmt.Println(time.Since(start))
 }
