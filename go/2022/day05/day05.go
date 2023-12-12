@@ -39,24 +39,47 @@ func format(s string) [][]string {
 	return tab
 }
 
-func createTest() []Stack {
-	res := []Stack{}
+func createTest(stackStr string) []Stack {
+	lines := strings.Split(stackStr, "\n")
+	input := [][]string{}
+	for _, x := range lines {
+		input = append(input, strings.Split(x, ""))
+	}
 	var stack1 Stack
 	var stack2 Stack
 	var stack3 Stack
-	stack1.Push("Z")
-	stack1.Push("N")
-	stack2.Push("M")
-	stack2.Push("C")
-	stack2.Push("D")
-	stack3.Push("P")
+	i := len(input) - 2
+	for i > -1 {
+		k := 0
+		for k < len(input[0]) {
+			if (k%4) == 1 && input[i][k] != " " {
+				if k == 1 {
+					stack1.Push(input[i][k])
+				}
+				if k == 5 {
+					stack2.Push(input[i][k])
+				}
+				if k == 9 {
+					stack3.Push(input[i][k])
+				}
+			}
+			k++
+		}
+		i--
+	}
+	res := []Stack{}
 	res = append(res, stack1)
 	res = append(res, stack2)
 	res = append(res, stack3)
 	return res
 }
 
-func createInput() []Stack {
+func createInput(stackStr string) []Stack {
+	lines := strings.Split(stackStr, "\n")
+	input := [][]string{}
+	for _, x := range lines {
+		input = append(input, strings.Split(x, ""))
+	}
 	res := []Stack{}
 	var stack1 Stack
 	var stack2 Stack
@@ -67,62 +90,43 @@ func createInput() []Stack {
 	var stack7 Stack
 	var stack8 Stack
 	var stack9 Stack
-	stack1.Push("S")
-	stack1.Push("L")
-	stack1.Push("W")
-	stack2.Push("J")
-	stack2.Push("T")
-	stack2.Push("N")
-	stack2.Push("Q")
-	stack3.Push("S")
-	stack3.Push("C")
-	stack3.Push("H")
-	stack3.Push("F")
-	stack3.Push("J")
-	stack4.Push("T")
-	stack4.Push("R")
-	stack4.Push("M")
-	stack4.Push("W")
-	stack4.Push("N")
-	stack4.Push("G")
-	stack4.Push("B")
-	stack5.Push("T")
-	stack5.Push("R")
-	stack5.Push("L")
-	stack5.Push("S")
-	stack5.Push("D")
-	stack5.Push("H")
-	stack5.Push("Q")
-	stack5.Push("B")
-	stack6.Push("M")
-	stack6.Push("J")
-	stack6.Push("B")
-	stack6.Push("V")
-	stack6.Push("F")
-	stack6.Push("H")
-	stack6.Push("R")
-	stack6.Push("L")
-	stack7.Push("D")
-	stack7.Push("W")
-	stack7.Push("R")
-	stack7.Push("N")
-	stack7.Push("J")
-	stack7.Push("M")
-	stack8.Push("B")
-	stack8.Push("Z")
-	stack8.Push("T")
-	stack8.Push("F")
-	stack8.Push("H")
-	stack8.Push("N")
-	stack8.Push("D")
-	stack8.Push("J")
-	stack9.Push("H")
-	stack9.Push("L")
-	stack9.Push("Q")
-	stack9.Push("N")
-	stack9.Push("B")
-	stack9.Push("F")
-	stack9.Push("T")
+	i := len(input) - 2
+	for i > -1 {
+		k := 0
+		for k < len(input[0]) {
+			if (k%4) == 1 && input[i][k] != " " {
+				if k == 1 {
+					stack1.Push(input[i][k])
+				}
+				if k == 5 {
+					stack2.Push(input[i][k])
+				}
+				if k == 9 {
+					stack3.Push(input[i][k])
+				}
+				if k == 13 {
+					stack4.Push(input[i][k])
+				}
+				if k == 17 {
+					stack5.Push(input[i][k])
+				}
+				if k == 21 {
+					stack6.Push(input[i][k])
+				}
+				if k == 25 {
+					stack7.Push(input[i][k])
+				}
+				if k == 29 {
+					stack8.Push(input[i][k])
+				}
+				if k == 33 {
+					stack9.Push(input[i][k])
+				}
+			}
+			k++
+		}
+		i--
+	}
 	res = append(res, stack1)
 	res = append(res, stack2)
 	res = append(res, stack3)
@@ -135,14 +139,14 @@ func createInput() []Stack {
 	return res
 }
 
-func part1(s string) []string {
+func part1(s string, stackStr string) []string {
 	tab := format(s)
 	stacks := []Stack{}
 	if len(tab) == 4 {
-		stacks = createTest()
+		stacks = createTest(stackStr)
 	}
 	if len(tab) > 4 {
-		stacks = createInput()
+		stacks = createInput(stackStr)
 	}
 	for _, line := range tab {
 		n, _ := strconv.Atoi(line[1])
@@ -165,14 +169,14 @@ func part1(s string) []string {
 	return res
 }
 
-func part2(s string) []string {
+func part2(s string, stackStr string) []string {
 	tab := format(s)
 	stacks := []Stack{}
 	if len(tab) == 4 {
-		stacks = createTest()
+		stacks = createTest(stackStr)
 	}
 	if len(tab) > 4 {
-		stacks = createInput()
+		stacks = createInput(stackStr)
 	}
 	for _, line := range tab {
 		n, _ := strconv.Atoi(line[1])
@@ -206,12 +210,19 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	contentStack, err := os.ReadFile("testStack.data")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	fmt.Printf("Test :\n")
 	start := time.Now()
-	fmt.Printf("\nPart 1 : %v\n", part1(string(content)))
+	fmt.Printf("\nPart 1 : %v\n", part1(string(content), string(contentStack)))
 	fmt.Println(time.Since(start))
 	start = time.Now()
-	fmt.Printf("\nPart 2 : %v\n", part2(string(content)))
+	fmt.Printf("\nPart 2 : %v\n", part2(string(content), string(contentStack)))
 	fmt.Println(time.Since(start))
 
 	content, err = os.ReadFile("input.data")
@@ -219,11 +230,18 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	contentStack, err = os.ReadFile("inputStack.data")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	fmt.Printf("\nInput :\n")
 	start = time.Now()
-	fmt.Printf("\nPart 1 : %v\n", part1(string(content)))
+	fmt.Printf("\nPart 1 : %v\n", part1(string(content), string(contentStack)))
 	fmt.Println(time.Since(start))
 	start = time.Now()
-	fmt.Printf("\nPart 2 : %v\n", part2(string(content)))
+	fmt.Printf("\nPart 2 : %v\n", part2(string(content), string(contentStack)))
 	fmt.Println(time.Since(start))
 }
