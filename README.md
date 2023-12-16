@@ -25,7 +25,7 @@ For now, all of it is written in Go. Hopefully in the future, I would like to us
 |[day 13](./go/2015/day13/day13.go)|&check;|&check;||||[day 13](./go/2022/day13/day13.go)|&check;|&check;|[day 13](./go/2023/day13/day13.go)|&check;|&check;|
 |[day 14](./go/2015/day14/day14.go)|&check;|&check;||||[day 14](./go/2022/day14/day14.go)|&check;|&check;|[day 14](./go/2023/day14/day14.go)|&check;|&check;|
 |[day 15](./go/2015/day15/day15.go)|&check;|&check;||||[day 15](./go/2022/day15/day15.go)|&check;|&check;|[day 15](./go/2023/day15/day15.go)|&check;|&check;|
-|[day 16](./go/2015/day16/day16.go)|&check;|&check;||||[day 16](./go/2022/day16/day16.go)|&check;|&check;|
+|[day 16](./go/2015/day16/day16.go)|&check;|&check;||||[day 16](./go/2022/day16/day16.go)|&check;|&check;|[day 16](./go/2023/day16/day16.go)|&check;|&check;|
 |[day 17](./go/2015/day17/day17.go)|&check;|&check;|||||||
 |[day 18](./go/2015/day18/day18.go)|&check;|&check;|||||||
 |[day 19](./go/2015/day19/day19.go)|&check;|&check;|||||||
