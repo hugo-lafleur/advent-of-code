@@ -205,13 +205,13 @@ func part2(s string, stackStr string) []string {
 }
 
 func main() {
-	content, err := os.ReadFile("test.data")
+	content, err := os.ReadFile("../../../inputs/2022/day05/test.data")
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	contentStack, err := os.ReadFile("testStack.data")
+	contentStack, err := os.ReadFile("../../../inputs/2022/day05/testStack.data")
 
 	if err != nil {
 		log.Fatal(err)
@@ -225,13 +225,13 @@ func main() {
 	fmt.Printf("\nPart 2 : %v\n", part2(string(content), string(contentStack)))
 	fmt.Println(time.Since(start))
 
-	content, err = os.ReadFile("input.data")
+	content, err = os.ReadFile("../../../inputs/2022/day05/input.data")
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	contentStack, err = os.ReadFile("inputStack.data")
+	contentStack, err = os.ReadFile("../../../inputs/2022/day05/inputStack.data")
 
 	if err != nil {
 		log.Fatal(err)

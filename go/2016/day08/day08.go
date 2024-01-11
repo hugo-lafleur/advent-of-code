@@ -158,7 +158,7 @@ func part2(s string) {
 }
 
 func main() {
-	content, err := os.ReadFile("test.data")
+	content, err := os.ReadFile("../../../inputs/2016/day08/test.data")
 
 	if err != nil {
 		log.Fatal(err)
@@ -172,7 +172,7 @@ func main() {
 	part2(string(content))
 	fmt.Println(time.Since(start))
 
-	content, err = os.ReadFile("input.data")
+	content, err = os.ReadFile("../../../inputs/2016/day08/input.data")
 
 	if err != nil {
 		log.Fatal(err)
