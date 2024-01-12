@@ -13,7 +13,7 @@ For now, all of it is written in Go. Hopefully in the future, I would like to us
 |[day 01](./go/2015/day01/day01.go)|&check;|&check;|[day 01](./go/2016/day01/day01.go)|&check;|&check;|[day 01](./go/2017/day01/day01.go)|&check;|&check;|
 |[day 02](./go/2015/day02/day02.go)|&check;|&check;|[day 02](./go/2016/day02/day02.go)|&check;|&check;|[day 02](./go/2017/day02/day02.go)|&check;|&check;|
 |[day 03](./go/2015/day03/day03.go)|&check;|&check;|[day 03](./go/2016/day03/day03.go)|&check;|&check;|[day 03](./go/2017/day03/day03.go)|&check;|&check;|
-|[day 04](./go/2015/day04/day04.go)|&check;|&check;|[day 04](./go/2016/day04/day04.go)|&check;|&check;|
+|[day 04](./go/2015/day04/day04.go)|&check;|&check;|[day 04](./go/2016/day04/day04.go)|&check;|&check;|[day 04](./go/2017/day04/day04.go)|&check;|&check;|
 |[day 05](./go/2015/day05/day05.go)|&check;|&check;|[day 05](./go/2016/day05/day05.go)|&check;|&check;|
 |[day 06](./go/2015/day06/day06.go)|&check;|&check;|[day 06](./go/2016/day06/day06.go)|&check;|&check;|
 |[day 07](./go/2015/day07/day07.go)|&check;|&check;|[day 07](./go/2016/day07/day07.go)|&check;|&check;|
