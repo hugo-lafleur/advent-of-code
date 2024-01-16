@@ -8,9 +8,9 @@ For now, all of it is written in Go. Hopefully in the future, I would like to us
 
 # Go
 
-|2015|Part 1|Part 2|2016|Part 1|Part 2|2017|Part 1|Part 2|
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|[day 01](./go/2015/day01/day01.go)|&check;|&check;|[day 01](./go/2016/day01/day01.go)|&check;|&check;|[day 01](./go/2017/day01/day01.go)|&check;|&check;|
+|2015|Part 1|Part 2|2016|Part 1|Part 2|2017|Part 1|Part 2|2018|Part 1|Part 2|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|[day 01](./go/2015/day01/day01.go)|&check;|&check;|[day 01](./go/2016/day01/day01.go)|&check;|&check;|[day 01](./go/2017/day01/day01.go)|&check;|&check;|[day 01](./go/2018/day01/day01.go)|&check;|&check;|
 |[day 02](./go/2015/day02/day02.go)|&check;|&check;|[day 02](./go/2016/day02/day02.go)|&check;|&check;|[day 02](./go/2017/day02/day02.go)|&check;|&check;|
 |[day 03](./go/2015/day03/day03.go)|&check;|&check;|[day 03](./go/2016/day03/day03.go)|&check;|&check;|[day 03](./go/2017/day03/day03.go)|&check;|&check;|
 |[day 04](./go/2015/day04/day04.go)|&check;|&check;|[day 04](./go/2016/day04/day04.go)|&check;|&check;|[day 04](./go/2017/day04/day04.go)|&check;|&check;|
