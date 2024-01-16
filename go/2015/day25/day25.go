@@ -43,10 +43,6 @@ func part1(s string) int {
 	return tab[2980][3074]
 }
 
-func part2(s string) int {
-	return 0
-}
-
 func main() {
 	content, err := os.ReadFile("../../../inputs/2015/day25/input.data")
 
@@ -56,8 +52,5 @@ func main() {
 	fmt.Printf("\nInput :\n")
 	start := time.Now()
 	fmt.Printf("\nPart 1 : %v\n", part1(string(content)))
-	fmt.Println(time.Since(start))
-	start = time.Now()
-	fmt.Printf("\nPart 2 : %v\n", part2(string(content)))
 	fmt.Println(time.Since(start))
 }
