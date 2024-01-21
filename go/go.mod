@@ -4,5 +4,6 @@ go 1.21.6
 
 require (
 	github.com/RyanCarrier/dijkstra v1.3.0
+	github.com/dominikbraun/graph v0.23.0
 	github.com/gammazero/deque v0.2.1
 )
