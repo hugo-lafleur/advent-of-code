@@ -43,7 +43,7 @@ For now, all of it is written in Go. Hopefully in the future, I would like to us
 |[day03](./go/2019/day03/day03.go)|&check;|&check;|[day03](.)|||[day03](.)|||[day03](./go/2022/day03/day03.go)|&check;|&check;|
 |[day04](./go/2019/day04/day04.go)|&check;|&check;|[day04](.)|||[day04](.)|||[day04](./go/2022/day04/day04.go)|&check;|&check;|
 |[day05](./go/2019/day05/day05.go)|&check;|&check;|[day05](.)|||[day05](.)|||[day05](./go/2022/day05/day05.go)|&check;|&check;|
-|[day06](.)|||[day06](.)|||[day06](.)|||[day06](./go/2022/day06/day06.go)|&check;|&check;|
+|[day05](./go/2019/day06/day06.go)|&check;|&check;|[day06](.)|||[day06](.)|||[day06](./go/2022/day06/day06.go)|&check;|&check;|
 |[day07](.)|||[day07](.)|||[day07](.)|||[day07](./go/2022/day07/day07.go)|&check;|&check;|
 |[day08](.)|||[day08](.)|||[day08](.)|||[day08](./go/2022/day08/day08.go)|&check;|&check;|
 |[day09](.)|||[day09](.)|||[day09](.)|||[day09](./go/2022/day09/day09.go)|&check;|&check;|
