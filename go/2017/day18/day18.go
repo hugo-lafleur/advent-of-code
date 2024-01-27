@@ -81,6 +81,7 @@ func part2aux(s string, id int, out, in, res chan int) {
 	registers := make(map[string]int)
 	registers["p"] = id
 	send := 0
+mainLoop:
 	for i := 0; i < len(instrs); i++ {
 		instr := instrs[i]
 		switch instr[0] {
@@ -125,12 +126,8 @@ func part2aux(s string, id int, out, in, res chan int) {
 			case received := <-in:
 				registers[instr[1]] = received
 			case <-time.After(1 * time.Second):
-				if id == 1 {
-					res <- send
-					return
-				}
+				break mainLoop
 			}
-
 		case "jgz":
 			n, err1 := strconv.Atoi(instr[1])
 			m, err2 := strconv.Atoi(instr[2])
@@ -158,7 +155,6 @@ func part2(s string) int {
 	go part2aux(s, 0, ch0, ch1, res)
 	go part2aux(s, 1, ch1, ch0, res)
 
-	time.Sleep(2 * time.Second)
 	return <-res
 }
 
