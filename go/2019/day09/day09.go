@@ -75,7 +75,7 @@ mainLoop:
 			i += 3
 		case 3:
 			switch mode1 {
-			case 1:
+			case 0:
 				p[p[i+1]] = input
 			case 2:
 				p[relativeBase+p[i+1]] = input
