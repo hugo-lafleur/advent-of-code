@@ -32,7 +32,7 @@ For now, all of it is written in Go. Hopefully in the future, I would like to us
 |[day20](./go/2015/day20/day20.go)|&check;|&check;|[day20](./go/2016/day20/day20.go)|&check;|&check;|[day20](./go/2017/day20/day20.go)|&check;|&check;|[day20](./go/2018/day20/day20.go)|&check;|&check;|
 |[day21](./go/2015/day21/day21.go)|&check;|&check;|[day21](./go/2016/day21/day21.go)|&check;|&check;|[day21](./go/2017/day21/day21.go)|&check;|&check;|[day21](./go/2018/day21/day21.go)|&check;|&check;|
 |[day22](./go/2015/day22/day22.go)|&check;|&check;|[day22](./go/2016/day22/day22.go)|&check;|&check;|[day22](./go/2017/day22/day22.go)|&check;|&check;|[day22](./go/2018/day22/day22.go)|&check;|&check;|
-|[day23](./go/2015/day23/day23.go)|&check;|&check;|[day23](./go/2016/day23/day23.go)|&check;|&check;|[day23](./go/2017/day23/day23.go)|&check;|&check;|[day23](./go/2018/day23/day23.go)|*|*|
+|[day23](./go/2015/day23/day23.go)|&check;|&check;|[day23](./go/2016/day23/day23.go)|&check;|&check;|[day23](./go/2017/day23/day23.go)|&check;|&check;|[day23](./go/2018/day23/day23.go)|   *   |   *   |
 |[day24](./go/2015/day24/day24.go)|&check;|&check;|[day24](./go/2016/day24/day24.go)|&check;|&check;|[day24](./go/2017/day24/day24.go)|&check;|&check;|[day24](./go/2018/day24/day24.go)|&check;|&check;|
 |[day25](./go/2015/day25/day25.go)|&check;|&check;|[day25](./go/2016/day25/day25.go)|&check;|&check;|[day25](./go/2017/day25/day25.go)|&check;|&check;|[day25](./go/2018/day25/day25.go)|&check;|&check;|
 
@@ -52,7 +52,7 @@ For now, all of it is written in Go. Hopefully in the future, I would like to us
 |[day12](./go/2019/day12/day12.go)|&check;|&check;|[day12](.)|||[day12](.)|||[day12](./go/2022/day12/day12.go)|&check;|&check;|
 |[day13](./go/2019/day13/day13.go)|&check;|&check;|[day13](.)|||[day13](.)|||[day13](./go/2022/day13/day13.go)|&check;|&check;|
 |[day14](./go/2019/day14/day14.go)|&check;|&check;|[day14](.)|||[day14](.)|||[day14](./go/2022/day14/day14.go)|&check;|&check;|
-|[day15](.)|||[day15](.)|||[day15](.)|||[day15](./go/2022/day15/day15.go)|&check;|&check;|
+|[day15](./go/2019/day15/day15.go)|   *   |   *   |[day15](.)|||[day15](.)|||[day15](./go/2022/day15/day15.go)|&check;|&check;|
 |[day16](.)|||[day16](.)|||[day16](.)|||[day16](./go/2022/day16/day16.go)|&check;||
 |[day17](.)|||[day17](.)|||[day17](.)|||[day17](.)|||
 |[day18](.)|||[day18](.)|||[day18](.)|||[day18](.)|||
