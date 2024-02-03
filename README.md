@@ -56,7 +56,7 @@ For now, all of it is written in Go. Hopefully in the future, I would like to us
 |[day16](./go/2019/day16/day16.go)|&check;|&check;|[day16](.)|||[day16](.)|||[day16](./go/2022/day16/day16.go)|&check;||
 |[day17](./go/2019/day17/day17.go)|&check;|&check;|[day17](.)|||[day17](.)|||[day17](.)|||
 |[day18](./go/2019/day18/day18.go)|&check;|&check;|[day18](.)|||[day18](.)|||[day18](.)|||
-|[day19](.)|||[day19](.)|||[day19](.)|||[day19](.)|||
+|[day19](./go/2019/day19/day19.go)|&check;|&check;|[day19](.)|||[day19](.)|||[day19](.)|||
 |[day20](.)|||[day20](.)|||[day20](.)|||[day20](.)|||
 |[day21](.)|||[day21](.)|||[day21](.)|||[day21](.)|||
 |[day22](.)|||[day22](.)|||[day22](.)|||[day22](.)|||
