@@ -40,7 +40,7 @@ For now, all of it is written in Go. Hopefully in the future, I would like to us
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |[day01](./go/2019/day01/day01.go)|&check;|&check;|[day01](./go/2020/day01/day01.go)|&check;|&check;|[day01](.)|||[day01](./go/2022/day01/day01.go)|&check;|&check;|
 |[day02](./go/2019/day02/day02.go)|&check;|&check;|[day02](./go/2020/day02/day02.go)|&check;|&check;|[day02](.)|||[day02](./go/2022/day02/day02.go)|&check;|&check;|
-|[day03](./go/2019/day03/day03.go)|&check;|&check;|[day03](.)|||[day03](.)|||[day03](./go/2022/day03/day03.go)|&check;|&check;|
+|[day03](./go/2019/day03/day03.go)|&check;|&check;|[day03](./go/2020/day03/day03.go)|&check;|&check;|[day03](.)|||[day03](./go/2022/day03/day03.go)|&check;|&check;|
 |[day04](./go/2019/day04/day04.go)|&check;|&check;|[day04](.)|||[day04](.)|||[day04](./go/2022/day04/day04.go)|&check;|&check;|
 |[day05](./go/2019/day05/day05.go)|&check;|&check;|[day05](.)|||[day05](.)|||[day05](./go/2022/day05/day05.go)|&check;|&check;|
 |[day06](./go/2019/day06/day06.go)|&check;|&check;|[day06](.)|||[day06](.)|||[day06](./go/2022/day06/day06.go)|&check;|&check;|
