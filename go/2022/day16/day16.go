@@ -3,18 +3,34 @@ package main
 import (
 	"fmt"
 	"log"
-	"math/rand"
 	"os"
-	"sort"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
 
 	"github.com/RyanCarrier/dijkstra"
+	"github.com/gammazero/deque"
 )
+
+type valve_description struct {
+	flow int
+	near []string
+}
+
+type state struct {
+	pos      string
+	opened   []string
+	pressure int
+	time     int
+}
 
 func Split(r rune) bool {
 	return r == ' ' || r == ',' || r == ';' || r == '='
+}
+
+func Split2(r rune) bool {
+	return r == '[' || r == ']'
 }
 
 func format(s string) [][]string {
@@ -26,169 +42,162 @@ func format(s string) [][]string {
 	return tab
 }
 
-func permutations(arr []int) [][]int {
-	var helper func([]int, int)
-	res := [][]int{}
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
 
-	helper = func(arr []int, n int) {
-		if n == 1 {
-			tmp := make([]int, len(arr))
-			copy(tmp, arr)
-			res = append(res, tmp)
+func hash(s state) string {
+	return fmt.Sprint(s.pos) + fmt.Sprint(s.opened) + fmt.Sprint(s.time)
+}
+
+func hashToOpened(s string) []string {
+	parts := strings.FieldsFunc(s, Split2)
+	if len(parts) == 1 {
+		return []string{}
+	}
+	return strings.Split(parts[1], " ")
+}
+
+func solve(s string, max_time int) (int, map[string]int) {
+	tab := format(s)
+	var res int
+	valves := make(map[string]valve_description)
+	var q deque.Deque[state]
+	var usefulValves []string
+	paths := make(map[string]map[string]int)
+	graph := dijkstra.NewGraph()
+	for _, line := range tab {
+		graph.AddMappedVertex(line[1])
+	}
+	for _, line := range tab {
+		flow, _ := strconv.Atoi(line[5])
+		near := []string{}
+		near = append(near, line[1])
+		for i := 10; i < len(line); i++ {
+			graph.AddMappedArc(line[1], line[i], 1)
+			near = append(near, line[i])
+		}
+		desc := valve_description{flow: flow, near: near}
+		if flow > 0 {
+			usefulValves = append(usefulValves, line[1])
+		}
+		valves[line[1]] = desc
+	}
+	for _, line := range tab {
+		valve := line[1]
+		paths[valve] = make(map[string]int)
+		for _, usefulValve := range usefulValves {
+			if valve != usefulValve {
+				srcID, _ := graph.GetMapping(valve)
+				destID, _ := graph.GetMapping(usefulValve)
+				best, _ := graph.Shortest(srcID, destID)
+				paths[valve][usefulValve] = int(best.Distance)
+			}
+		}
+	}
+	visited := make(map[string]int)
+	start := state{pos: "AA", opened: []string{}, pressure: 0, time: 0}
+	visited[hash(start)] = 0
+	q.PushBack(start)
+	for q.Len() != 0 {
+		curr := q.PopFront()
+		pressure := visited[hash(curr)]
+		res = max(res, pressure)
+		if curr.time == max_time {
+			continue
+		}
+		new_pressure := pressure
+		for _, valve := range curr.opened {
+			new_pressure += valves[valve].flow
+		}
+		states_to_add := []state{}
+		if slices.Contains(curr.opened, curr.pos) {
+			new_opened := []string{}
+			new_opened = append(new_opened, curr.opened...)
+			slices.Sort(new_opened)
+			new_state := state{pos: curr.pos, opened: new_opened, pressure: pressure + (new_pressure-pressure)*(max_time-curr.time), time: max_time}
+			states_to_add = append(states_to_add, new_state)
+		}
+		if slices.Contains(usefulValves, curr.pos) && !slices.Contains(curr.opened, curr.pos) {
+			new_opened := []string{}
+			new_opened = append(new_opened, curr.opened...)
+			new_opened = append(new_opened, curr.pos)
+			slices.Sort(new_opened)
+			new_state := state{pos: curr.pos, opened: new_opened, pressure: new_pressure, time: curr.time + 1}
+			states_to_add = append(states_to_add, new_state)
 		} else {
-			for i := 0; i < n; i++ {
-				helper(arr, n-1)
-				if n%2 == 1 {
-					tmp := arr[i]
-					arr[i] = arr[n-1]
-					arr[n-1] = tmp
-				} else {
-					tmp := arr[0]
-					arr[0] = arr[n-1]
-					arr[n-1] = tmp
+			if len(curr.opened) != len(usefulValves) {
+				for _, usefulValve := range usefulValves {
+					if !slices.Contains(curr.opened, usefulValve) {
+						new_opened := []string{}
+						new_opened = append(new_opened, curr.opened...)
+						slices.Sort(new_opened)
+						new_state := state{pos: usefulValve, opened: new_opened, pressure: pressure + (new_pressure-pressure)*(paths[curr.pos][usefulValve]), time: curr.time + paths[curr.pos][usefulValve]}
+						if new_state.time > max_time {
+							new_state.pressure = pressure + (new_pressure-pressure)*(max_time-curr.time)
+							new_state.time = max_time
+						}
+						states_to_add = append(states_to_add, new_state)
+					}
 				}
 			}
 		}
-	}
-	helper(arr, len(arr))
-	return res
-}
-
-/*func is_in(tab []int, x int) bool {
-	for _, y := range tab {
-		if x == y {
-			return true
+		for _, new_state := range states_to_add {
+			h := hash(new_state)
+			old, seen := visited[h]
+			if (!seen || old < new_state.pressure) && new_state.time <= max_time {
+				q.PushBack(new_state)
+				visited[h] = new_state.pressure
+			}
 		}
 	}
-	return false
-}*/
-
-func sum(tab []int) int {
-	s := 0
-	for _, x := range tab {
-		s += x
-	}
-	return s
-}
-
-func max(tab []int) int {
-	m := tab[0]
-	for _, x := range tab {
-		if x > m {
-			m = x
-		}
-	}
-	return m
-}
-
-/*func max_map(dict map[int]int) int {
-	m := 0
-	res := 0
-	for x := range dict {
-		if dict[x] > m {
-			m = dict[x]
-			res = x
-		}
-	}
-	return res
-}*/
-
-func is_in(tab []int, x int) bool {
-	for _, y := range tab {
-		if x == y {
-			return true
-		}
-	}
-	return false
+	return res, visited
 }
 
 func part1(s string) int {
-	tab := format(s)
-	dict := make(map[string]int)
-	valves := []int{}
-	res := []int{}
-	for i := range tab {
-		dict[tab[i][1]] = i
-	}
-	graph := dijkstra.NewGraph()
-	for i := range tab {
-		graph.AddVertex(i)
-	}
-	for _, line := range tab {
-		src := dict[line[1]]
-		j := 10
-		for j < len(line) {
-			graph.AddArc(src, dict[line[j]], 1)
-			j++
-		}
-	}
-	for i, line := range tab {
-		n, _ := strconv.Atoi(line[5])
-		if n != 0 {
-			valves = append(valves, i)
-		}
-	}
-	allPath := [][]int{}
-	i := 0
-	flow := make(map[int]int)
-	for _, x := range valves {
-		n, _ := strconv.Atoi(tab[x][5])
-		flow[x] = n
-	}
-	for i < 100000 {
-		done := []int{0}
-		path := []int{0}
-		for len(done) <= len(valves) {
-			next := 0
-			for is_in(done, next) {
-				next = valves[rand.Intn(len(valves))]
-			}
-			path = append(path, next)
-			done = append(done, next)
-		}
-		allPath = append(allPath, path)
-		i++
-	}
-	//fmt.Println(allPath)
-	for _, path := range allPath {
-		tmp := []int{0}
-		i := 0
-		for i < len(path)-1 {
-			best, _ := graph.Shortest(path[i], path[i+1])
-			tmp = append(tmp, best.Path[1:]...)
-			i++
-		}
-		fullpath := tmp
-		open := path
-		i = 0
-		time := 0
-		pressure := 0
-		add := []int{}
-		for i < len(fullpath) && time < 30 {
-			pressure += sum(add)
-			time++
-			if fullpath[i] == open[0] {
-				n, _ := strconv.Atoi(tab[fullpath[i]][5])
-				add = append(add, n)
-				pressure += sum(add)
-				open = open[1:]
-				time++
-			}
-			i++
-		}
-		//fmt.Println(time)
-		if time < 30 {
-			pressure += sum(add) * (30 - time + 1)
-			res = append(res, pressure)
-		}
-	}
-	sort.Ints(res)
-	//fmt.Println(res)
-	return max(res)
+	res, _ := solve(s, 30)
+	return res
 }
 
 func part2(s string) int {
-	return 0
+	res := 0
+	_, mapping := solve(s, 26)
+	pressure := make(map[string]int)
+	paths := []string{}
+	for key := range mapping {
+		array := hashToOpened(key)
+		str := strings.Join(array, " ")
+		_, added := pressure[str]
+		if !added {
+			paths = append(paths, str)
+		}
+		pressure[str] = max(pressure[str], mapping[key])
+	}
+	for i := 0; i < len(paths); i++ {
+		fmt.Println(i)
+	next:
+		for j := i + 1; j < len(paths); j++ {
+			path1 := paths[i]
+			path2 := paths[j]
+			opened1 := strings.Split(path1, " ")
+			opened2 := strings.Split(path2, " ")
+			for _, e := range opened1 {
+				if slices.Contains(opened2, e) {
+					continue next
+				}
+			}
+			for _, e := range opened2 {
+				if slices.Contains(opened1, e) {
+					continue next
+				}
+			}
+			res = max(res, pressure[path1]+pressure[path2])
+		}
+	}
+	return res
 }
 
 func main() {
