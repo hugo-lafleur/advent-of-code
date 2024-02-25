@@ -90,6 +90,7 @@ For now, all of it is written in Go. Hopefully in the future, I would like to us
 |[day22](./go/2023/day22/day22.go)|&check;|&check;|
 |[day23](./go/2023/day23/day23.go)|&check;|&check;|
 |[day24](./go/2023/day24/day24.go)|   *   |   *   |
+|[day25](./go/2023/day25/day25.go)|&check;|&check;|
 
 # Notes
 
