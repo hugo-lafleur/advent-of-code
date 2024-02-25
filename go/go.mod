@@ -7,3 +7,5 @@ require (
 	github.com/dominikbraun/graph v0.23.0
 	github.com/gammazero/deque v0.2.1
 )
+
+require gonum.org/v1/gonum v0.14.0
