@@ -39,12 +39,12 @@ func main() {
 	f.Write([]byte(str))
 	f.Close()
 
-	_, err = os.Create("../inputs/" + year + "/" + day + "/test.data")
+	_, err = os.Create("../inputs/" + year + "/" + day + "/test.txt")
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	_, err = os.Create("../inputs/" + year + "/" + day + "/input.data")
+	_, err = os.Create("../inputs/" + year + "/" + day + "/input.txt")
 	if err != nil {
 		log.Fatalln(err)
 	}

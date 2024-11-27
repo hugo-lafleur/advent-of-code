@@ -69,7 +69,7 @@ func part1(s string) string {
 }
 
 func main() {
-	content, err := os.ReadFile("../../../inputs/2022/day25/test.data")
+	content, err := os.ReadFile("../../../inputs/2022/day25/test.txt")
 
 	if err != nil {
 		log.Fatal(err)
@@ -79,7 +79,7 @@ func main() {
 	fmt.Printf("\nPart 1 : %v\n", part1(string(content)))
 	fmt.Println(time.Since(start))
 
-	content, err = os.ReadFile("../../../inputs/2022/day25/input.data")
+	content, err = os.ReadFile("../../../inputs/2022/day25/input.txt")
 
 	if err != nil {
 		log.Fatal(err)

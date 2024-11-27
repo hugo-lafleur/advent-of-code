@@ -157,7 +157,7 @@ func part2(s string) int {
 }
 
 func main() {
-	content, err := os.ReadFile("../../../inputs/2018/day21/input.data")
+	content, err := os.ReadFile("../../../inputs/2018/day21/input.txt")
 
 	if err != nil {
 		log.Fatal(err)

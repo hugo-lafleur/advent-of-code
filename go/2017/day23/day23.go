@@ -133,7 +133,7 @@ out:
 }
 
 func main() {
-	content, err := os.ReadFile("../../../inputs/2017/day23/input.data")
+	content, err := os.ReadFile("../../../inputs/2017/day23/input.txt")
 
 	if err != nil {
 		log.Fatal(err)

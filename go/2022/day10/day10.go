@@ -89,7 +89,7 @@ func printRes(res [6][40]string) {
 }
 
 func main() {
-	content, err := os.ReadFile("../../../inputs/2022/day10/test.data")
+	content, err := os.ReadFile("../../../inputs/2022/day10/test.txt")
 
 	if err != nil {
 		log.Fatal(err)
@@ -103,7 +103,7 @@ func main() {
 	printRes(part2(string(content)))
 	fmt.Println(time.Since(start))
 
-	content, err = os.ReadFile("../../../inputs/2022/day10/input.data")
+	content, err = os.ReadFile("../../../inputs/2022/day10/input.txt")
 
 	if err != nil {
 		log.Fatal(err)

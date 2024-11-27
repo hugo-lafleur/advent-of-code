@@ -228,7 +228,7 @@ loop:
 }
 
 func main() {
-	content, err := os.ReadFile("../../../inputs/2019/day15/input.data")
+	content, err := os.ReadFile("../../../inputs/2019/day15/input.txt")
 
 	if err != nil {
 		log.Fatal(err)

@@ -126,7 +126,7 @@ func part2(s string) square {
 }
 
 func main() {
-	content, err := os.ReadFile("../../../inputs/2018/day11/test.data")
+	content, err := os.ReadFile("../../../inputs/2018/day11/test.txt")
 
 	if err != nil {
 		log.Fatal(err)
@@ -139,7 +139,7 @@ func main() {
 	fmt.Printf("\nPart 2 : %v\n", part2(string(content)))
 	fmt.Println(time.Since(start))
 
-	content, err = os.ReadFile("../../../inputs/2018/day11/input.data")
+	content, err = os.ReadFile("../../../inputs/2018/day11/input.txt")
 
 	if err != nil {
 		log.Fatal(err)
