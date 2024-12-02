@@ -61,6 +61,7 @@ func solve(blueprint map[string]map[string]int, maxTime int) int {
 	lor, lc, lob := limit["ore"], limit["clay"], limit["obsidian"]
 	start := state{aor: 0, ac: 0, aob: 0, ag: 0, ror: 1, rc: 0, rob: 0, rg: 0, time: maxTime}
 	oror, cor, obor, obc, gor, gob := blueprint["ore"]["ore"], blueprint["clay"]["ore"], blueprint["obsidian"]["ore"], blueprint["obsidian"]["clay"], blueprint["geode"]["ore"], blueprint["geode"]["obsidian"]
+	var visited = make(map[state]bool)
 	var dfs func(state)
 	dfs = func(curr state) {
 		res = max(res, curr.ag)
@@ -104,7 +105,10 @@ func solve(blueprint map[string]map[string]int, maxTime int) int {
 			}
 		}
 		newState := state{aor: curr.aor + curr.ror, ac: curr.ac + curr.rc, aob: curr.aob + curr.rob, ag: curr.ag + curr.rg, ror: curr.ror, rc: curr.rc, rob: curr.rob, rg: curr.rg, time: curr.time - 1}
-		dfs(newState)
+		if !visited[newState] {
+			dfs(newState)
+			visited[newState] = true
+		}
 	}
 	dfs(start)
 	return res
