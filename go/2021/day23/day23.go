@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"runtime/pprof"
 	"slices"
 	"strconv"
 	"strings"
@@ -253,12 +252,6 @@ func part2(s string) int {
 }
 
 func main() {
-	f, err := os.Create("cpu.pprof")
-	if err != nil {
-		panic(err)
-	}
-	pprof.StartCPUProfile(f)
-	defer pprof.StopCPUProfile()
 	content, err := os.ReadFile("../../../inputs/2021/day23/test.txt")
 
 	if err != nil {
