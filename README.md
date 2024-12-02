@@ -64,9 +64,9 @@ For now, all of it is written in Go. Hopefully in the future, I would like to us
 |[day24](./go/2019/day24/day24.go)|&check;|&check;|[day24](./go/2020/day24/day24.go)|&check;|&check;|[day24](./go/2021/day24/day24.go)|&check;|&check;|[day24](./go/2022/day24/day24.go)|&check;|&check;|
 |[day25](./go/2019/day25/day25.go)|&check;|&check;|[day25](./go/2020/day25/day25.go)|&check;|&check;|[day25](./go/2021/day25/day25.go)|&check;|&check;|[day25](./go/2022/day25/day25.go)|&check;|&check;|
 
-|2023|Part 1|Part 2|
-|:---:|:---:|:---:|
-|[day01](./go/2023/day01/day01.go)|&check;|&check;|
+|2023|Part 1|Part 2|2024|Part 1|Part 2|
+|:---:|:---:|:---:|:---:|:---:|:---:|
+|[day01](./go/2023/day01/day01.go)|&check;|&check;|[day01](./go/2024/day01/day01.go)|&check;|&check;|
 |[day02](./go/2023/day02/day02.go)|&check;|&check;|
 |[day03](./go/2023/day03/day03.go)|&check;|&check;|
 |[day04](./go/2023/day04/day04.go)|&check;|&check;|
