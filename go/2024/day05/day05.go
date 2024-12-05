@@ -10,8 +10,8 @@ import (
 	"time"
 )
 
-func parse(s string) (map[int]map[int]bool, [][]int) {
-	var rules = make(map[int]map[int]bool)
+func parse(s string) (map[int]map[int]int, [][]int) {
+	var rules = make(map[int]map[int]int)
 	var updates [][]int
 	var lines = strings.Split(s, "\n")
 	var i int
@@ -24,13 +24,13 @@ func parse(s string) (map[int]map[int]bool, [][]int) {
 		a, _ := strconv.Atoi(parts[0])
 		b, _ := strconv.Atoi(parts[1])
 		if rules[a] == nil {
-			rules[a] = make(map[int]bool)
+			rules[a] = make(map[int]int)
 		}
 		if rules[b] == nil {
-			rules[b] = make(map[int]bool)
+			rules[b] = make(map[int]int)
 		}
-		rules[a][b] = false
-		rules[b][a] = true
+		rules[a][b] = -1
+		rules[b][a] = 1
 		i++
 	}
 	for i < len(lines) {
@@ -46,39 +46,12 @@ func parse(s string) (map[int]map[int]bool, [][]int) {
 	return rules, updates
 }
 
-func correctlyOrderedUpdate(rules map[int]map[int]bool, update []int) bool {
-	for i := 0; i < len(update); i++ {
-		for j := i + 1; j < len(update); j++ {
-			if rules[update[i]][update[j]] {
-				return false
-			}
-		}
-	}
-	return true
-}
-
-func orderedUpdate(rules map[int]map[int]bool, update []int) []int {
-	var result = make([]int, len(update))
-	copy(result, update)
-	var count = make(map[int]int)
-	for _, x := range update {
-		for _, y := range update {
-			if !rules[x][y] {
-				count[x]++
-			}
-		}
-	}
-	slices.SortFunc(result, func(a, b int) int {
-		return count[b] - count[a]
-	})
-	return result
-}
-
 func part1(s string) int {
 	var rules, updates = parse(s)
+	var cmp = func(a, b int) int { return rules[a][b] }
 	var result int
 	for _, upd := range updates {
-		if correctlyOrderedUpdate(rules, upd) {
+		if slices.IsSortedFunc(upd, cmp) {
 			result += upd[len(upd)/2]
 		}
 	}
@@ -87,10 +60,12 @@ func part1(s string) int {
 
 func part2(s string) int {
 	var rules, updates = parse(s)
+	var cmp = func(a, b int) int { return rules[a][b] }
 	var result int
 	for _, upd := range updates {
-		if !correctlyOrderedUpdate(rules, upd) {
-			result += orderedUpdate(rules, upd)[len(upd)/2]
+		if !slices.IsSortedFunc(upd, cmp) {
+			slices.SortFunc(upd, cmp)
+			result += upd[len(upd)/2]
 		}
 	}
 	return result
