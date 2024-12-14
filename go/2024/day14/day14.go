@@ -3,10 +3,14 @@ package main
 import (
 	"fmt"
 	"log"
+	"math"
+	"math/big"
 	"os"
 	"slices"
 	"strings"
 	"time"
+
+	"gonum.org/v1/gonum/stat"
 )
 
 type Point struct {
@@ -61,7 +65,42 @@ func part1(s string) int {
 	return quadrants[0] * quadrants[1] * quadrants[2] * quadrants[3]
 }
 
-func part2(s string) int {
+func part2(s string) int { //using variance to find most "organized" time
+	var robots = parse(s)
+	var m, n = 103, 101
+	if len(robots) == 12 {
+		m, n = 7, 11
+	}
+	var bx, by int //
+	var minVarx, minVary = math.MaxFloat64, math.MaxFloat64
+	for t := range max(m, n) {
+		var listx = make([]float64, len(robots))
+		var listy = make([]float64, len(robots))
+		for i, r := range robots {
+			p := position(r, t)
+			p.x = ((p.x % n) + n) % n
+			p.y = ((p.y % m) + m) % m
+			listx[i] = float64(p.x)
+			listy[i] = float64(p.y)
+		}
+		varx := stat.Variance(listx, nil)
+		if varx < minVarx {
+			minVarx = varx
+			bx = t
+		}
+		vary := stat.Variance(listy, nil)
+		if vary < minVary {
+			minVary = vary
+			by = t
+		}
+	}
+	var Z big.Int
+	var G = big.NewInt(int64(m))
+	var N = big.NewInt(int64(n))
+	return by + (int(Z.ModInverse(G, N).Int64())*(bx-by)%n)*m
+}
+
+func part2_old(s string) int { //bruteforce : finding a long straight line of robots
 	var robots = parse(s)
 	var m, n = 103, 101
 	if len(robots) == 12 {
