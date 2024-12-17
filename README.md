@@ -82,7 +82,7 @@ For now, all of it is written in Go. Hopefully in the future, I would like to us
 |[day14](./go/2023/day14/day14.go)|&check;|&check;|[day14](./go/2024/day14/day14.go)|&check;|&check;|
 |[day15](./go/2023/day15/day15.go)|&check;|&check;|[day15](./go/2024/day15/day15.go)|&check;|&check;|
 |[day16](./go/2023/day16/day16.go)|&check;|&check;|[day16](./go/2024/day16/day16.go)|&check;|&check;|
-|[day17](./go/2023/day17/day17.go)|&check;|&check;|
+|[day17](./go/2023/day17/day17.go)|&check;|&check;|[day17](./go/2024/day17/day17.go)|&check;|&check;|
 |[day18](./go/2023/day18/day18.go)|&check;|&check;|
 |[day19](./go/2023/day19/day19.go)|&check;|&check;|
 |[day20](./go/2023/day20/day20.go)|&check;|&check;|
