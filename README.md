@@ -67,7 +67,7 @@ For now, all of it is written in Go. Hopefully in the future, I would like to us
 |2023|Part 1|Part 2|2024|Part 1|Part 2|2025|Part 1|Part 2|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |[day01](./go/2023/day01/day01.go)|&check;|&check;|[day01](./go/2024/day01/day01.go)|&check;|&check;|[day01](./go/2025/day01/day01.go)|&check;|&check;|
-|[day02](./go/2023/day02/day02.go)|&check;|&check;|[day02](./go/2024/day02/day02.go)|&check;|&check;|
+|[day02](./go/2023/day02/day02.go)|&check;|&check;|[day02](./go/2024/day02/day02.go)|&check;|&check;|[day02](./go/2025/day02/day02.go)|&check;|&check;|
 |[day03](./go/2023/day03/day03.go)|&check;|&check;|[day03](./go/2024/day03/day03.go)|&check;|&check;|
 |[day04](./go/2023/day04/day04.go)|&check;|&check;|[day04](./go/2024/day04/day04.go)|&check;|&check;|
 |[day05](./go/2023/day05/day05.go)|&check;|&check;|[day05](./go/2024/day05/day05.go)|&check;|&check;|
